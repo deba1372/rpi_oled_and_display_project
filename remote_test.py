@@ -54,7 +54,7 @@ camera.start_preview()
 # Testing this 5 times
 
 for i in range(5):
-	camera.capture('/home/pi/Desktop/test_images/test_image.jpg' % i)
+	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
 	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg').resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
 	disp.image(image)
