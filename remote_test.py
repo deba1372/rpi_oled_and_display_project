@@ -42,11 +42,12 @@ draw.rectangle((0,0,width,height), outline=0, fill=0)
 
 
 
-##############################################################
-
 # Display image.
 disp.image(image)
 disp.display()
+
+##############################################################
+
 
 disp.clear()
 disp.display()
