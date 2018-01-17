@@ -1,6 +1,8 @@
 
 import time
 
+import numpy
+
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_SSD1306
 
@@ -50,16 +52,19 @@ camera.start_preview()
 ##############################################################
 
 # The fun bits
-# Test: take picture, convert, display
+# Test: take picture, convert, make pic array, display pic
 # Testing this 5 times
 
 for i in range(10):
 	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
-	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg').resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
+	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg')
+	ppm_image = image.resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
+
+	image_array = numpy.array(ppm_image)
+	
 	disp.image(image)
 	disp.display()
-
 
 ##############################################################
 
