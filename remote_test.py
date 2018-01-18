@@ -1,5 +1,6 @@
 
 import time
+import pickle
 
 import numpy
 
@@ -11,6 +12,8 @@ from PIL import ImageDraw
 from PIL import ImageFont
 
 from picamera import PiCamera
+
+import AIC
 
 ##############################################################
 
@@ -51,24 +54,64 @@ camera.start_preview()
 
 ##############################################################
 
-# The fun bits
 # Test: take picture, convert, make pic array, display pic
 # Testing this 5 times
 
-for i in range(10):
+for i in range(5):
 	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
 	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg')
 	ppm_image = image.resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
-
-	image_array = numpy.array(ppm_image)
 	
 	disp.image(image)
 	disp.display()
 
-##############################################################
+	time.sleep(3)
 
 camera.stop_preview()
+
+disp.clear()
+disp.display()
+
+##############################################################
+
+# Now for the fun bit
+# make array into pic, display
+
+# Write list files 
+w_list_1 = [i for i in range(128)]
+w_list_2 = [i+1 for i in range(128)]
+w_matrix = [w_list_1, w_list_2]
+
+b_list_1 = [i%3 for i in range(128)]
+b_list_2 = [i%5 for i in range(128)]
+b_matrix = [b_list_1, b_list_2]
+
+input_list = [1 for i in range(128)]
+
+with open("test_matrix_w.txt", "wb") as weights:
+	pickle.dump(w_matrix, weights)
+
+with open("test_matrix_b.txt", "wb") as biases:
+	pickle.dump(b_matrix, biases)
+
+with open("test_inputs.txt", "wb") as inputs:
+	pickle.dump(input_list, inputs)
+
+
+weights_array = []
+with open(array_file, rb) as af:
+	weights_array = pickle.load(af)
+
+weights_array = []
+
+weights_image = AIC.array_to_image(weights_array)
+
+disp.image(weights_image)
+disp.display()
+
+
+##############################################################
 
 disp.clear()
 disp.display()
