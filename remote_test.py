@@ -98,18 +98,35 @@ with open("test_matrix_b.txt", "wb") as biases:
 with open("test_inputs.txt", "wb") as inputs:
 	pickle.dump(input_list, inputs)
 
-
+#load arrays
 weights_array = []
-with open(array_file, rb) as af:
-	weights_array = pickle.load(af)
+with open(w_matrix, "rb") as wm:
+	weights_array = pickle.load(wm)
 
-weights_array = []
+bias_array = []
+with open(b_matrix, "rb") as bm:
+	bias_array = pickle.load(bm)
 
+intput_vector = []
+with open(input_list, "rb") as il:
+	intput_vector = pickle.load(il)
+
+#display arrays
 weights_image = AIC.array_to_image(weights_array)
+biases_image = AIC.array_to_image(bias_array)
+input_vector_image = AIC.array_to_image(intput_vector)
 
 disp.image(weights_image)
 disp.display()
+time.sleep(3)
 
+disp.image(biases_image)
+disp.display()
+time.sleep(3)
+
+disp.image(input_vector_image)
+disp.display()
+time.sleep(3)
 
 ##############################################################
 
