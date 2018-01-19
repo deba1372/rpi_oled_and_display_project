@@ -22,8 +22,9 @@ def array_to_image(weights_array):
         for j in i:
             int_as_bin = [int(x) for x in list('{:0b}'.format(j))]
             if len(int_as_bin) < 32:
-                temp = [0 for _ in range(32 - len(int_as_bin))]
-                int_as_bin = temp.extend(int_as_bin)
+                temp = [0 for x in range(32 - len(int_as_bin))]
+                temp.extend(int_as_bin)
+                int_as_bin = temp
             binary_list.extend(int_as_bin)
         
     if len(binary_list) < disp_pixles:
@@ -34,7 +35,7 @@ def array_to_image(weights_array):
         binary_list = binary_list[:disp_pixles]
 
     binary_np_array = numpy.array(binary_list, numpy.int32)
-    binary_np_array.shape(disp_height,disp_width)
+    binary_np_array.shape = (disp_height,disp_width)
 
     output_image = Image.fromarray(binary_np_array)
     output_image.resize((disp_width, disp_height), Image.ANTIALIAS).convert('1')

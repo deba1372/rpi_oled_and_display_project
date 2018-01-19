@@ -105,8 +105,6 @@ weights_array = []
 with open("test_matrix_w.txt", "rb") as wm:
 	weights_array = pickle.load(wm)
 
-print "Starting array", weights_array, "Ending array"
-
 bias_array = []
 with open("test_matrix_b.txt", "rb") as bm:
 	bias_array = pickle.load(bm)
@@ -118,7 +116,7 @@ with open("test_inputs.txt", "rb") as il:
 #display arrays
 weights_image = AIC.array_to_image(weights_array)
 biases_image = AIC.array_to_image(bias_array)
-input_vector_image = AIC.array_to_image(intput_vector)
+input_vector_image = AIC.array_to_image([intput_vector])
 
 disp.image(weights_image)
 disp.display()
