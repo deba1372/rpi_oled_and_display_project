@@ -14,13 +14,18 @@ disp_width = 128
 disp_height = 64
 disp_pixles = disp_width*disp_height
 
+
 def array_to_image(weights_array):
 
     binary_list = []
     for i in weights_array:
-        for j in weights_array:
+        for j in i:
+            int_as_bin = [int(x) for x in list('{:0b}'.format(j))]
+            if len(int_as_bin) < 32:
+                temp = [0 for _ in range(32 - len(int_as_bin))]
+                int_as_bin = temp.extend(int_as_bin)
+            binary_list.extend(int_as_bin)
         
-
     if len(binary_list) < disp_pixles:
         zero_padding = [0 for i in range((disp_pixles-len(binary_list)))]
         binary_list.extend(zero_padding)
