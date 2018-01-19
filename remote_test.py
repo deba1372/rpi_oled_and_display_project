@@ -4,14 +4,14 @@ import pickle
 
 import numpy
 
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_SSD1306
+#import Adafruit_GPIO.SPI as SPI
+#import Adafruit_SSD1306
 
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
 
-from picamera import PiCamera
+#from picamera import PiCamera
 
 import AIC
 
@@ -57,7 +57,7 @@ camera = PiCamera()
 # Test: take picture, convert, make pic array, display pic
 # Testing this 5 times
 
-'''
+
 for i in range(5):
 	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
@@ -73,7 +73,7 @@ camera.stop_preview()
 
 disp.clear()
 disp.display()
-'''
+
 
 ##############################################################
 
@@ -118,6 +118,7 @@ weights_image = AIC.array_to_image(weights_array)
 biases_image = AIC.array_to_image(bias_array)
 input_vector_image = AIC.array_to_image([intput_vector])
 
+"""
 disp.image(weights_image)
 disp.display()
 time.sleep(3)
@@ -134,3 +135,4 @@ time.sleep(3)
 
 disp.clear()
 disp.display()
+"""
