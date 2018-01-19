@@ -50,20 +50,21 @@ disp.display()
 
 camera = PiCamera()
 
-camera.start_preview()
+#camera.start_preview()
 
 ##############################################################
 
 # Test: take picture, convert, make pic array, display pic
 # Testing this 5 times
 
+'''
 for i in range(5):
 	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
 	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg')
 	ppm_image = image.resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
 	
-	disp.image(image)
+	disp.image(ppm_image)
 	disp.display()
 
 	time.sleep(3)
@@ -72,6 +73,7 @@ camera.stop_preview()
 
 disp.clear()
 disp.display()
+'''
 
 ##############################################################
 
@@ -90,7 +92,7 @@ b_matrix = [b_list_1, b_list_2]
 input_list = [1 for i in range(128)]
 
 with open("test_matrix_w.txt", "wb") as weights:
-	pickle.dump(w_matrix, weights)
+	pickle.dump(w_matrix, weights)  
 
 with open("test_matrix_b.txt", "wb") as biases:
 	pickle.dump(b_matrix, biases)
@@ -100,15 +102,17 @@ with open("test_inputs.txt", "wb") as inputs:
 
 #load arrays
 weights_array = []
-with open(w_matrix, "rb") as wm:
+with open("test_matrix_w.txt", "rb") as wm:
 	weights_array = pickle.load(wm)
 
+print "Starting array", weights_array, "Ending array"
+
 bias_array = []
-with open(b_matrix, "rb") as bm:
+with open("test_matrix_b.txt", "rb") as bm:
 	bias_array = pickle.load(bm)
 
 intput_vector = []
-with open(input_list, "rb") as il:
+with open("test_inputs.txt", "rb") as il:
 	intput_vector = pickle.load(il)
 
 #display arrays
