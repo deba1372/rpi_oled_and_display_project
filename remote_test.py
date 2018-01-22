@@ -58,7 +58,7 @@ camera = PiCamera()
 # Testing this 5 times
 
 
-for i in range(5):
+for i in range(1):
 	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
 	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg')
@@ -67,7 +67,7 @@ for i in range(5):
 	disp.image(ppm_image)
 	disp.display()
 
-	time.sleep(3)
+	time.sleep(2)
 
 camera.stop_preview()
 
@@ -118,7 +118,7 @@ weights_image = AIC.array_to_image(weights_array)
 biases_image = AIC.array_to_image(bias_array)
 input_vector_image = AIC.array_to_image([intput_vector])
 
-"""
+
 disp.image(weights_image)
 disp.display()
 time.sleep(3)
@@ -135,4 +135,4 @@ time.sleep(3)
 
 disp.clear()
 disp.display()
-"""
+

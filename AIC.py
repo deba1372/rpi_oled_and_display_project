@@ -36,10 +36,10 @@ def array_to_image(weights_array):
 
     binary_np_array = numpy.array(binary_list, numpy.int32)
     binary_np_array.shape = (disp_height,disp_width)
-    print binary_np_array
-
-    output_image = Image.fromarray(binary_np_array)
-    output_image.resize((disp_width, disp_height), Image.ANTIALIAS).convert('1')
+    
+    output_image = Image.fromarray(binary_np_array, "1")
+    output_image.resize((disp_width, disp_height), Image.ANTIALIAS)
+    print type(output_image)
 
     return output_image
 
