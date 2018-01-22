@@ -57,8 +57,8 @@ camera = PiCamera()
 # Test: take picture, convert, make pic array, display pic
 # Testing this 5 times
 
-
-for i in range(1):
+"""
+for i in range(5):
 	camera.capture('/home/pi/Desktop/test_images/test_image.jpg')
 	
 	image = Image.open('/home/pi/Desktop/test_images/test_image.jpg')
@@ -73,7 +73,7 @@ camera.stop_preview()
 
 disp.clear()
 disp.display()
-
+"""
 
 ##############################################################
 

@@ -33,9 +33,6 @@ def array_to_image(weights_array):
 
     if len(binary_list) > disp_pixles:
         binary_list = binary_list[:disp_pixles]
-
-    #binary_np_array = numpy.array(binary_list, numpy.int32)
-    #binary_np_array.shape = (disp_height,disp_width)
     
     output_image = Image.new('1', (disp_width, disp_height))
     output_image.putdata(binary_list)
