@@ -39,7 +39,6 @@ def array_to_image(weights_array):
     
     output_image = Image.fromarray(binary_np_array, "1")
     output_image.resize((disp_width, disp_height), Image.ANTIALIAS)
-    output_image.show()
 
     return output_image
 
