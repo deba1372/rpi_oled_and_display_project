@@ -118,6 +118,9 @@ weights_image = AIC.array_to_image(weights_array)
 biases_image = AIC.array_to_image(bias_array)
 input_vector_image = AIC.array_to_image([intput_vector])
 
+weights_image.save("weights_pic.bmp")
+biases_image.save("biases_pic.bmp")
+input_vector_image.save("inputs_pic.bmp")
 
 disp.image(weights_image)
 disp.display()
