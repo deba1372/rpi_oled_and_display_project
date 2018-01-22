@@ -35,10 +35,9 @@ def array_to_image(weights_array):
         binary_list = binary_list[:disp_pixles]
 
     binary_np_array = numpy.array(binary_list, numpy.int32)
-    binary_np_array.shape = (disp_height,disp_width)
+    binary_np_array.shape = (disp_width,disp_height)
     
     output_image = Image.fromarray(binary_np_array, "1")
-    output_image.resize((disp_width, disp_height), Image.ANTIALIAS)
 
     return output_image
 
