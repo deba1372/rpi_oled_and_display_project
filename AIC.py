@@ -56,4 +56,4 @@ def image_to_array(image_file):
           final_array.append(int(bit_str, 2))
           bit_str = ""
 
-    return final_array
+  return final_array
