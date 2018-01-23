@@ -113,6 +113,7 @@ intput_vector = []
 with open("test_inputs.txt", "rb") as il:
 	intput_vector = pickle.load(il)
 
+
 #display arrays
 weights_image = AIC.array_to_image(weights_array)
 biases_image = AIC.array_to_image(bias_array)
@@ -133,6 +134,11 @@ time.sleep(3)
 disp.image(input_vector_image)
 disp.display()
 time.sleep(3)
+
+
+#convert images to arrays
+new_w_array = AIC.image_to_array(weights_image)
+print new_w_array==weights_array
 
 ##############################################################
 
