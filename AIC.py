@@ -49,7 +49,7 @@ def image_to_array(image_file):
 
   #convert from binary array to int array
   bit_str = ""
-  final_array = numpy.array()
+  final_array = []
   for i in numpy.nditer(image_array):
       bit_str += str(i)
       if len(bit_str) == 32:
