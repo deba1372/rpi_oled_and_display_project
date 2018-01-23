@@ -42,18 +42,19 @@ def array_to_image(weights_array):
 
 # Image to Array
 
-def image_to_array(image_file):
-  weights_image = Image.open(image_file)
-  ppm_image = image.resize((disp.width, disp.height), Image.ANTIALIAS).convert('1')
+def image_to_array(image_file, dim=(2, 128)):
+  #weights_image = Image.open(image_file)
+  ppm_image = image_file.resize((disp_width, disp_height), Image.ANTIALIAS).convert('1')
   image_array = numpy.array(ppm_image.getdata()).reshape(ppm_image.size[0], ppm_image.size[1])
 
   #convert from binary array to int array
   bit_str = ""
-  final_array = []
+  final_array = numpy.array([], dtype=numpy.int32)
   for i in numpy.nditer(image_array):
       bit_str += str(i)
       if len(bit_str) == 32:
-          final_array.append(int(bit_str, 2))
+          final_array = numpy.append(final_array, [int(bit_str, 2)])
           bit_str = ""
 
+  final_array.shape = dim
   return final_array

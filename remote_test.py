@@ -125,20 +125,24 @@ input_vector_image.save("inputs_pic.bmp")
 
 disp.image(weights_image)
 disp.display()
-time.sleep(3)
+time.sleep(1)
 
 disp.image(biases_image)
 disp.display()
-time.sleep(3)
+time.sleep(1)
 
 disp.image(input_vector_image)
 disp.display()
-time.sleep(3)
+time.sleep(1)
+
+disp.clear()
+disp.display
 
 
 #convert images to arrays
 new_w_array = AIC.image_to_array(weights_image)
-print new_w_array==weights_array
+b = numpy.array(weights_array)
+print numpy.array_equal(new_w_array, b)
 
 ##############################################################
 
