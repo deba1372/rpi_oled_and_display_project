@@ -50,7 +50,7 @@ disp.display()
 
 camera = PiCamera()
 
-#camera.start_preview()
+
 
 ##############################################################
 
@@ -126,6 +126,11 @@ input_vector_image.save("inputs_pic.bmp")
 disp.image(weights_image)
 disp.display()
 time.sleep(1)
+
+camera.start_preview()
+time.sleep(120)
+
+camera.stop_preview()
 
 disp.image(biases_image)
 disp.display()

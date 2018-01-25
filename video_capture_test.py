@@ -38,8 +38,10 @@ disp.display()
 # Configuring and initializing camera
 
 camera = PiCamera()
+camera.start_recording('rgb')
 
-with picamera.array.PiRGBArray(camera) as output:
+with picamera.array.PiRGBAnalysis(camera) as output:
     camera.capture(output, 'rgb')
     print('Captured %dx%d image' % (
             output.array.shape[1], output.array.shape[0]))
+    print output.array
